@@ -60,6 +60,8 @@ export default async (Model, options = {}) => {
   Model.afterRemote('**', async (context) => {
     if (!client.connected) { return; }
 
+    if (!context.result) { return; }
+
     if (context.needsCaching) {
       client.set(context.cacheKey, JSON.stringify(context.result));
       client.expire(context.cacheKey, options.ttl);
