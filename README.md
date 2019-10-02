@@ -67,8 +67,8 @@ It is also possible to configure the mixin globally in your `config.json`. Just 
 ## ToDo and ideas
 
 - [ ] optimize cache keys
-- [ ] add override parameter (e.g. ?noCache=true)
-- [ ] add better usage documentation to this readme
+- [x] add override parameter (e.g. ?noCache=true)
+- [ ] add better usage documentation to this readme (e.g. noCaheFlag)
 - [ ] find better solution for searching and deleting cached items
 - [ ] add response headers with information about the cache (environment agnostic)
 

@@ -7,6 +7,8 @@ const warn = _debug();
 warn.log = console.warn.bind(console);
 
 const DEFAULT_TTL = 120;
+const DEFAULT_NO_CACHE_FLAG = 'noCache';
+const DEFAULT_NO_CACHE_FLAG_DISABLED = false;
 const METHODS_TO_CACHE = ['find', 'findById'];
 
 let client;
@@ -21,12 +23,16 @@ export default async (Model, options = {}) => {
 
     let globalOptions = app.get('cache') || {};
     options.ttl = options.ttl || globalOptions.ttl || DEFAULT_TTL;
+    options.noCacheFlag = options.noCacheFlag || globalOptions.noCacheFlag || DEFAULT_NO_CACHE_FLAG;
+    options.noCacheFlagDisabled = options.noCacheFlagDisabled || globalOptions.noCacheFlagDisabled || DEFAULT_NO_CACHE_FLAG_DISABLED;
 
     client = redis.createClient();
   });
 
   Model.beforeRemote('**', (context, res, next) => {
     if (!client.connected) { return; }
+
+    if (!options.noCacheFlagDisabled && context.req.query[options.noCacheFlag] === 'true') { return next(); }
 
     if (METHODS_TO_CACHE.includes(context.method.name) || context.method.name.indexOf('__get') !== -1) {
       const cacheKey = getCacheKey(context);
