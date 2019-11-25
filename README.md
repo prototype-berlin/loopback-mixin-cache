@@ -78,5 +78,8 @@ It is also possible to configure the mixin globally in your `config.json`. Just 
 
 ## Changelog
 
+### v0.2.0
+- Update dev dependencies
+
 ### v0.1.0
 - Initial stable version
