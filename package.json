@@ -2,7 +2,7 @@
   "name": "loopback-mixin-cache",
   "version": "0.2.0",
   "description": "Redis cache mixin for LoopBack.",
-  "main": "lib/index.js",
+  "main": "cache.js",
   "scripts": {
     "transpile": "babel src --out-dir lib",
     "release": "rm -rf lib && npm run transpile && np"
@@ -25,13 +25,7 @@
     "type": "git",
     "url": "https://github.com/prototype-berlin/loopback-mixin-cache"
   },
-  "devDependencies": {
-    "@babel/cli": "7.7.4",
-    "@babel/core": "7.7.4",
-    "@babel/plugin-proposal-async-generator-functions": "7.7.4",
-    "@babel/plugin-transform-runtime": "7.7.4",
-    "@babel/preset-env": "7.7.4"
-  },
+  "devDependencies": {},
   "dependencies": {
     "debug": "4.1.1",
     "redis": "2.8.0",
