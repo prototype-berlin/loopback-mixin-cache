@@ -7,8 +7,7 @@
   },
   "main": "cache.js",
   "scripts": {
-    "transpile": "babel src --out-dir lib",
-    "release": "rm -rf lib && npm run transpile && np"
+    "release": "np"
   },
   "author": "Manuel Heidrich",
   "contributors": [
