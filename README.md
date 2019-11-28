@@ -12,14 +12,14 @@ $ npm i loopback-mixin-cache --save
 
 ### Server Config
 
-With [loopback-boot@v2.8.0](https://github.com/strongloop/loopback-boot/) [mixinSources](https://github.com/strongloop/loopback-boot/pull/131) have been implemented in a way which allows for loading this mixin without changes to the server.js file previously required. Just add `"../node_modules/loopback-mixin-cache/lib"` to the `mixins` property of your `server/model-config.json`.
+With [loopback-boot@v2.8.0](https://github.com/strongloop/loopback-boot/) [mixinSources](https://github.com/strongloop/loopback-boot/pull/131) have been implemented in a way which allows for loading this mixin without changes to the server.js file previously required. Just add `"../node_modules/loopback-mixin-cache"` to the `mixins` property of your `server/model-config.json`.
 
 ```javascript
 {
   "_meta": {
     "mixins": [
       "loopback/common/mixins",
-      "../node_modules/loopback-mixin-cache/lib",
+      "../node_modules/loopback-mixin-cache",
       "../common/mixins"
     ]
   }
@@ -77,6 +77,10 @@ It is also possible to configure the mixin globally in your `config.json`. Just 
 [MIT](LICENSE)
 
 ## Changelog
+
+### v0.3.0
+- Remove babel
+- min. node version is now 8.x.x
 
 ### v0.2.0
 - Update dev dependencies

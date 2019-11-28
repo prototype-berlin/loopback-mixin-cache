@@ -1,10 +1,6 @@
-import _debug from './debug';
+const debug = require('debug')('loopback:mixins:cache');
 const redis = require('redis');
 const redisDeletePattern = require('redis-delete-pattern');
-
-const debug = _debug();
-const warn = _debug();
-warn.log = console.warn.bind(console);
 
 const DEFAULT_TTL = 120;
 const DEFAULT_NO_CACHE_FLAG = 'noCache';
@@ -13,7 +9,7 @@ const METHODS_TO_CACHE = ['find', 'findById'];
 
 let client;
 
-export default async (Model, options = {}) => {
+module.exports = function (Model, options = {}) {
   debug('Redis cache mixin for model %s', Model.modelName);
 
   Model.getApp((error, app) => {
@@ -118,6 +114,4 @@ export default async (Model, options = {}) => {
       }
     });
   }
-};
-
-module.exports = exports.default;
+}
